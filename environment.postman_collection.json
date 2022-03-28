@@ -1,0 +1,46 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Using environment",
+		"_postman_id": "10591d84-72ce-f6e9-ba37-12959c9ebae0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "postman-echo/{{path}}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"let jsonData = JSON.parse(responseBody);",
+							"tests['Correct value is returned'] = jsonData.form.foo === 'bar'",
+							"",
+							"postman.setEnvironmentVariable('foo', 'bar')"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "postman-echo.com/{{path}}",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "foo",
+							"value": "{{foo}}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
